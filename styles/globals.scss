@@ -1,3 +1,5 @@
+@import "_variables";
+
 html,
 body {
   padding: 0;
@@ -13,4 +15,24 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.divider {
+  $thick: 5px;
+  width: 100%;
+  height: 1px;
+  background-color: $border-color;
+
+  &.thick {
+    height: $thick;
+  }
+
+  &.vertical {
+    width: 1px;
+    height: 100%;
+
+    &.thick {
+      width: $thick;
+    }
+  }
 }
