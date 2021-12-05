@@ -1,0 +1,32 @@
+@import "_variables";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  min-width: 960px;
+  min-height: 100vh;
+  height: fit-content;
+  margin: 0 auto;
+  background-color: $container-background;
+}
+
+.toolkit {
+  position: sticky;
+  top: 0;
+  flex-basis: 360px;
+  max-height: 100vh;
+  background-color: $toolkit-background;
+}
+
+.workspace {
+  position: relative;
+  flex-basis: 720px;
+  margin-left: 5px;
+  background-color: $workspace-background;
+  overflow: hidden;
+}
+
+.moveable {
+  position: absolute;
+}

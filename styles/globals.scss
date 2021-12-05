@@ -1,4 +1,5 @@
 @import "_variables";
+@import "_fonts";
 
 html,
 body {
@@ -8,31 +9,20 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+  border: unset;
+  outline: unset;
+  background-color: unset;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-.divider {
-  $thick: 5px;
-  width: 100%;
-  height: 1px;
-  background-color: $border-color;
-
-  &.thick {
-    height: $thick;
-  }
-
-  &.vertical {
-    width: 1px;
-    height: 100%;
-
-    &.thick {
-      width: $thick;
-    }
-  }
+textarea {
+  display: flex;
+  flex-flow: row wrap;
+  resize: none;
 }

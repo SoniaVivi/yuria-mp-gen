@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Toolkit from "../components/Toolkit";
 import Workspace from "../components/Workspace";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 
 export default function Home() {
   return (
@@ -12,7 +12,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Toolkit className={styles.toolkit} />
-      <div className="divider vertical thick"></div>
       <Workspace className={styles.workspace} />
     </div>
   );

@@ -1,24 +1,53 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 let prevId = 0;
+//eslint-disable-next-line no-unused-vars
+const emptyState = {
+  mode: "edit",
+  size: { width: 1000, height: 1500 },
+  headings: {},
+};
 
-const emptyState = { size: [2000, 3000], headings: {} };
+const testState = {
+  ...emptyState,
+  headings: {
+    0: {
+      id: 0,
+      text: "TEST ZILLA",
+      top: 0,
+      left: 0,
+      textAlign: "center",
+      fontSize: "20",
+      fontFamily: "Godzilla",
+      color: "#000000",
+      outline: "1px solid #000000",
+    },
+  },
+};
+
+const headingDefaults = {
+  title: {
+    text: "",
+    top: 0,
+    left: 0,
+    font: "Godzilla",
+    fontSize: "36",
+    textAlign: "left",
+    color: "#000000",
+    outline: "1px solid #000000",
+  },
+};
 
 export const slice = createSlice({
   name: "poster",
-  initialState: emptyState,
+  initialState: testState,
   reducers: {
     addTitle: {
       reducer(state, action) {
-        const defaultTitleData = {
-          fontSize: "20",
-          font: "Godzilla",
-          text: "",
-          color: "#000000",
-        };
         state.headings[prevId + 1] = {
-          ...defaultTitleData,
+          ...headingDefaults.title,
           ...action.payload.titleData,
+          id: (prevId += 1),
         };
       },
       prepare(titleData) {
@@ -36,9 +65,19 @@ export const slice = createSlice({
         return { payload: { id, headingData } };
       },
     },
+    setMode: {
+      reducer(state, action) {
+        state.mode = action.payload.mode;
+      },
+      prepare(mode) {
+        return { payload: { mode } };
+      },
+    },
   },
 });
 
 export const { addTitle, setHeading } = slice.actions;
+
+export const selectMode = (state) => state.poster.mode;
 
 export default slice.reducer;
