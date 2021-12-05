@@ -1,0 +1,50 @@
+@import "variables";
+
+$left-padding: 6px;
+
+.toolkit {
+  position: sticky;
+  top: 0;
+  flex-basis: 360px;
+  max-height: 100vh;
+  background-color: $toolkit-background;
+
+  > :nth-child(2) {
+    padding-left: $left-padding;
+  }
+}
+
+.tab-container {
+  height: 28px;
+  background-color: $container-background;
+}
+
+.tab {
+  height: 100%;
+  padding: 2px $left-padding;
+  font-size: 16px;
+  border: 1px solid $container-background;
+  border-radius: 5px;
+  border-bottom-left-radius: unset;
+  border-bottom-right-radius: unset;
+  border-bottom: unset;
+  background-color: adjust-color(
+    $color: $container-background,
+    $whiteness: 70%
+  );
+  cursor: pointer;
+}
+
+.active-tab {
+  border-color: $toolkit-background;
+  background-color: $toolkit-background;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+
+  :last-child {
+    margin-left: 10px;
+  }
+}

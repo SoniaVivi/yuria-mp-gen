@@ -11,9 +11,12 @@ body {
 
 * {
   box-sizing: border-box;
+  margin: unset;
+  padding: unset;
   border: unset;
   outline: unset;
   background-color: unset;
+  list-style: none;
 }
 
 a {
@@ -25,4 +28,41 @@ textarea {
   display: flex;
   flex-flow: row wrap;
   resize: none;
+}
+
+.plus-sign {
+  $size: 18px;
+  $line-thickness: 2px;
+  $offset: round($size / 2) - 1;
+  $width-decrease: 6px;
+  position: relative;
+  user-select: none;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: $hover;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    background-color: $text-color;
+  }
+
+  &::before {
+    top: $width-decrease / 2;
+    left: $offset;
+    width: $line-thickness;
+    height: calc(100% - $width-decrease);
+  }
+
+  &::after {
+    top: $offset;
+    left: $width-decrease / 2;
+    width: calc(100% - $width-decrease);
+    height: $line-thickness;
+  }
 }

@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import "../styles/globals.scss";
 import store from "../components/store";
 import { Provider } from "react-redux";
@@ -11,3 +13,8 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
+
+MyApp.propTypes = {
+  Component: PropTypes.func.isRequired,
+  pageProps: PropTypes.object.isRequired,
+};

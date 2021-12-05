@@ -11,14 +11,6 @@
   background-color: $container-background;
 }
 
-.toolkit {
-  position: sticky;
-  top: 0;
-  flex-basis: 360px;
-  max-height: 100vh;
-  background-color: $toolkit-background;
-}
-
 .workspace {
   position: relative;
   flex-basis: 720px;

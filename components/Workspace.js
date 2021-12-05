@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import { useRef, useState, useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setHeading } from "./posterSlice";
@@ -74,3 +76,7 @@ const Workspace = (props) => {
 };
 
 export default Workspace;
+
+Workspace.propTypes = {
+  className: PropTypes.string,
+};

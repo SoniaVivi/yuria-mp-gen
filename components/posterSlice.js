@@ -17,7 +17,7 @@ const testState = {
       top: 0,
       left: 0,
       textAlign: "center",
-      fontSize: "20",
+      fontSize: "36",
       fontFamily: "Godzilla",
       color: "#000000",
       outline: "1px solid #000000",
@@ -27,10 +27,10 @@ const testState = {
 
 const headingDefaults = {
   title: {
-    text: "",
+    text: "Lorem Ipsum",
     top: 0,
     left: 0,
-    font: "Godzilla",
+    fontFamily: "Godzilla",
     fontSize: "36",
     textAlign: "left",
     color: "#000000",
