@@ -4,7 +4,7 @@ let prevId = 0;
 //eslint-disable-next-line no-unused-vars
 const emptyState = {
   mode: "edit",
-  size: { width: 1000, height: 1500 },
+  size: { width: 750, height: 1125 },
   headings: {},
 };
 
@@ -17,7 +17,7 @@ const testState = {
       top: 0,
       left: 0,
       textAlign: "center",
-      fontSize: "36",
+      fontSize: 36,
       fontFamily: "Godzilla",
       color: "#000000",
       outline: "1px solid #000000",

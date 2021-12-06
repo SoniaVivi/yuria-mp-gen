@@ -1,27 +1,46 @@
 @import "variables";
 
-$left-padding: 6px;
+$side-padding: 12px;
 
 .toolkit {
+  $margin-top: 5px;
   position: sticky;
-  top: 0;
+  top: $margin-top;
   flex-basis: 360px;
-  max-height: 100vh;
+  max-height: calc(100vh - $margin-top);
+  margin-top: $margin-top;
   background-color: $toolkit-background;
 
   > :nth-child(2) {
-    padding-left: $left-padding;
+    padding: 0 $side-padding;
+
+    > * {
+      margin-top: $margin-top;
+    }
+  }
+
+  textarea {
+    min-height: 24px;
+    width: 100%;
+    height: fit-content;
+    padding: 5px;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    resize: vertical;
   }
 }
 
 .tab-container {
+  display: flex;
   height: 28px;
   background-color: $container-background;
 }
 
 .tab {
   height: 100%;
-  padding: 2px $left-padding;
+  padding: 2px $side-padding;
   font-size: 16px;
   border: 1px solid $container-background;
   border-radius: 5px;
@@ -46,5 +65,21 @@ $left-padding: 6px;
 
   :last-child {
     margin-left: 10px;
+  }
+}
+
+.heading-section {
+  > * {
+    margin-top: 5px;
+  }
+}
+.options-menu-container {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 5px;
+
+  > :first-child {
+    margin-right: 10px;
   }
 }

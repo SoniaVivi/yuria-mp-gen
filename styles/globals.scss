@@ -5,8 +5,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 * {
@@ -17,11 +15,18 @@ body {
   outline: unset;
   background-color: unset;
   list-style: none;
+  font-size: 16px;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button {
+  display: flex;
 }
 
 textarea {
@@ -65,4 +70,62 @@ textarea {
     width: calc(100% - $width-decrease);
     height: $line-thickness;
   }
+}
+.dropdown-container {
+  $item-width: 162px;
+  position: relative;
+  margin-left: -5px;
+
+  &.active {
+    margin-bottom: 1px;
+    z-index: 2;
+  }
+
+  > * {
+    width: $item-width;
+    padding: 0 5px;
+    border-radius: 5px;
+    border: 1px solid $light-border-color;
+  }
+
+  .current {
+    display: flex;
+
+    &.active {
+      border-bottom: unset;
+      border-bottom-left-radius: unset;
+      border-bottom-right-radius: unset;
+    }
+  }
+}
+
+.dropdown {
+  position: absolute;
+  display: flex;
+  flex-flow: column nowrap;
+  padding-bottom: 5px;
+  border-top: unset;
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
+  background-color: $toolkit-background;
+
+  * {
+    background-color: $toolkit-background;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: flex;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.no-select {
+  user-select: none;
 }

@@ -28,7 +28,12 @@ const Workspace = (props) => {
     <div
       ref={containerRef}
       className={props.className}
-      style={{ width: `${width}px`, height: `${height}px` }}
+      style={{
+        minWidth: width,
+        minHeight: height,
+        maxWidth: width,
+        maxHeight: height,
+      }}
       onMouseMove={(e) =>
         selectedElem !== null
           ? dispatch(

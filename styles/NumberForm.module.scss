@@ -1,0 +1,51 @@
+@import "_variables";
+
+.wrapper {
+  $input-size: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  height: 50px;
+  background-color: $toolkit-background;
+  border: 1px solid $light-border-color;
+  border-radius: 5px;
+
+  > *:not(.divider, .divider-vertical) {
+    border: unset;
+    background-color: unset;
+  }
+
+  input {
+    width: $input-size;
+    margin: 0;
+    padding: 0 5px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.divider {
+  max-height: 1px;
+  min-height: 1px;
+  width: 100%;
+  background-color: $light-border-color;
+}
+
+.divider-vertical {
+  min-width: 1px;
+  max-width: 1px;
+  height: 100%;
+  background-color: $light-border-color;
+}
+
+.arrow-wrapper {
+  padding-top: 5px 0;
+}
