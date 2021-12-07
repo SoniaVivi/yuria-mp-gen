@@ -11,7 +11,8 @@
   border: 1px solid $light-border-color;
   border-radius: 5px;
 
-  > *:not(.divider, .divider-vertical) {
+  > input,
+  svg {
     border: unset;
     background-color: unset;
   }
@@ -30,20 +31,6 @@
 
 .rotate {
   transform: rotate(180deg);
-}
-
-.divider {
-  max-height: 1px;
-  min-height: 1px;
-  width: 100%;
-  background-color: $light-border-color;
-}
-
-.divider-vertical {
-  min-width: 1px;
-  max-width: 1px;
-  height: 100%;
-  background-color: $light-border-color;
 }
 
 .arrow-wrapper {

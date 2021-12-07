@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import { useRef, useState, useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setHeading } from "./posterSlice";
-import style from "../styles/Home.module.scss";
-import useHeadingData from "./hooks/useHeadingData";
+import Heading from "./workspaceChildren/Heading";
 
 const Workspace = (props) => {
-  const headings = useHeadingData();
+  const headingsIds = useSelector((state) =>
+    Object.keys(state.poster.headings)
+  );
   const { width, height } = useSelector((state) => state.poster.size);
   const dispatch = useDispatch();
   const containerRef = useRef(null);
@@ -23,6 +24,17 @@ const Workspace = (props) => {
     },
     { x: null, y: null }
   );
+
+  const fromEventSetAnchor = (e, id) => {
+    setAnchor({
+      type: "drop",
+      position: {
+        x: e.clientX - e.target.offsetLeft - containerRef.current.offsetLeft,
+        y: e.clientY - e.target.offsetTop,
+      },
+    });
+    setSelectedElem(id);
+  };
 
   return (
     <div
@@ -49,33 +61,9 @@ const Workspace = (props) => {
         setAnchor({ type: "retrieve" });
       }}
     >
-      {headings.map((headingData) => {
-        return (
-          <textarea
-            key={headingData.id}
-            type="text"
-            style={headingData.style}
-            className={style.moveable}
-            value={headingData.text}
-            onChange={(e) =>
-              dispatch(setHeading(headingData.id, { text: e.target.value }))
-            }
-            onMouseDown={(e) => {
-              setAnchor({
-                type: "drop",
-                position: {
-                  x:
-                    e.clientX -
-                    e.target.offsetLeft -
-                    containerRef.current.offsetLeft,
-                  y: e.clientY - e.target.offsetTop,
-                },
-              });
-              setSelectedElem(headingData.id);
-            }}
-          ></textarea>
-        );
-      })}
+      {headingsIds.map((id) => (
+        <Heading id={id} key={id} setAnchor={fromEventSetAnchor} />
+      ))}
     </div>
   );
 };

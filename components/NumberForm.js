@@ -28,11 +28,11 @@ const NumberForm = (props) => {
         value={props.value}
         onChange={(e) => setValue(e.target.value)}
       ></input>
-      <div className={style["divider-vertical"]}></div>
+      <div className="divider vertical"></div>
       <div className={style["arrow-wrapper"]}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <Arrow onClick={valueStepFunc()} className={style.rotate} />
-        <div className={style.divider}></div>
+        <div className="divider"></div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <Arrow onClick={valueStepFunc(-1)} className={style["arrow-icon"]} />
       </div>

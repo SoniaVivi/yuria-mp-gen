@@ -1,28 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import useHeadingData from "../hooks/useHeadingData";
-import { addTitle, setHeading } from "../posterSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addTitle } from "../posterSlice";
 import style from "../../styles/Toolkit.module.scss";
-import OptionsMenu from "../OptionsMenu";
-import FormWrapper from "./FormWrapper";
-import NumberForm from "../NumberForm";
+import HeadingChild from "./HeadingChild";
 
 const HeadingsTab = () => {
-  const headings = useHeadingData();
+  const headingsIds = useSelector((state) =>
+    Object.keys(state.poster.headings)
+  );
   const dispatch = useDispatch();
-  const fontNames = {
-    Godzilla: "Godzilla",
-    Orbitron: "Orbitron",
-    "Doom (Left)": "Doom Left",
-    "Doom (Right)": "Doom Right",
-    "Doom Outline (Left)": "Doom Outline Left",
-    "Doom Outline (Right)": "Doom Outline Right",
-    Roboto: "Roboto",
-    Lato: "Lato",
-    Arvo: "Arvo",
-    Antonio: "Antonio",
-    Ubuntu: "Ubuntu",
-  };
 
   return (
     <div>
@@ -35,66 +21,8 @@ const HeadingsTab = () => {
           ></button>
         </div>
         <ul>
-          {headings.map((data) => (
-            <li key={data.id}>
-              <textarea
-                type="text"
-                value={data.text}
-                onChange={(e) =>
-                  dispatch(setHeading(data.id, { text: e.target.value }))
-                }
-              ></textarea>
-              <FormWrapper name="Font Family">
-                <OptionsMenu
-                  options={[
-                    "Godzilla",
-                    "Orbitron",
-                    "Doom (Left)",
-                    "Doom (Right)",
-                    "Doom Outline (Left)",
-                    "Doom Outline (Right)",
-                    "Roboto",
-                    "Lato",
-                    "Arvo",
-                    "Antonio",
-                    "Ubuntu",
-                  ]}
-                  setOptionFunc={(font) =>
-                    dispatch(
-                      setHeading(data.id, {
-                        fontFamily: fontNames[font],
-                      })
-                    )
-                  }
-                  current={data.fontFamily}
-                />
-              </FormWrapper>
-              <FormWrapper name="Text Align">
-                <OptionsMenu
-                  options={["Start", "Center", "End", "Justify"]}
-                  setOptionFunc={(clicked) =>
-                    dispatch(
-                      setHeading(data.id, {
-                        textAlign: clicked.toLowerCase(),
-                      })
-                    )
-                  }
-                  current={`${data.textAlign
-                    .slice(0, 1)
-                    .toUpperCase()}${data.textAlign.slice(1)}`}
-                />
-              </FormWrapper>
-              <FormWrapper name="Font Size">
-                <NumberForm
-                  value={data.fontSize}
-                  onChange={(mutator) =>
-                    dispatch(
-                      setHeading(data.id, { fontSize: mutator(data.fontSize) })
-                    )
-                  }
-                />
-              </FormWrapper>
-            </li>
+          {headingsIds.map((id) => (
+            <HeadingChild id={id} key={id} />
           ))}
         </ul>
       </div>

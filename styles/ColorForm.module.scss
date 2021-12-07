@@ -1,0 +1,29 @@
+@import "_variables";
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 90px;
+  padding: 3px 5px;
+  border: 1px solid $light-border-color;
+  border-radius: 5px;
+
+  > input {
+    max-width: 60px;
+    width: fit-content;
+  }
+}
+
+.droplet {
+  $size: 16px;
+  width: $size;
+  height: $size;
+}
+
+.menu {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 60px;
+}

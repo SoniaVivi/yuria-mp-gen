@@ -4,19 +4,18 @@ import onOutsideClick from "./helpers/onOutsideClick";
 
 const OptionsMenu = (props) => {
   const [showEditor, setShowEditor] = useState(false);
-  const toggle = () => setShowEditor((prevState) => !prevState);
 
   return (
     <div
       className={`dropdown-container ${props.className ?? ""} ${
         showEditor ? "active" : ""
       }`}
-      onClick={toggle}
+      onClick={() => setShowEditor((prevState) => !prevState)}
     >
       <span
         className={`no-select current clickable ${showEditor ? "active" : ""}`}
         onClick={(e) => {
-          onOutsideClick(toggle, e, "parent");
+          onOutsideClick(() => setShowEditor(false), e, "parent");
         }}
       >
         {props.current}

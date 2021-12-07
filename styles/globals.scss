@@ -129,3 +129,19 @@ textarea {
 .no-select {
   user-select: none;
 }
+
+.divider {
+  max-height: 1px;
+  min-height: 1px;
+  width: 100%;
+  background-color: $light-border-color;
+}
+
+.divider.vertical {
+  max-width: 1px;
+  max-height: unset;
+  min-width: 1px;
+  min-height: unset;
+  height: 100%;
+  background-color: $light-border-color;
+}
