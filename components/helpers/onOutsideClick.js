@@ -1,4 +1,9 @@
-const onOutsideClick = (toggle, event = null, target = null) => {
+const onOutsideClick = (
+  toggle,
+  event = null,
+  target = null,
+  logging = false
+) => {
   let container;
   if (target == "parent") {
     container = event.target.parentNode;
@@ -8,12 +13,19 @@ const onOutsideClick = (toggle, event = null, target = null) => {
     container = target;
   }
 
+  if (logging) {
+    console.log(
+      `onOutsideClick | Container: ${container} | Target: ${event.target}`
+    );
+  }
+
   const closeMenu = (mouseUpEvent) => {
     let clickedElement = mouseUpEvent.target;
 
     if (!container.contains(clickedElement) || clickedElement == container) {
-      console.log("toggled");
-      console.log(container);
+      if (logging) {
+        console.log(`onOutsideClick | Clicked Element: ${clickedElement}`);
+      }
       toggle();
       document.removeEventListener("mouseup", closeMenu);
     }
