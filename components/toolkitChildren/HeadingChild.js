@@ -7,6 +7,7 @@ import FormWrapper from "./FormWrapper";
 import NumberForm from "../NumberForm";
 import ColorForm from "./ColorForm";
 import useHeadingData from "../hooks/useHeadingData";
+import style from "../../styles/Toolkit.module.scss";
 
 const HeadingChild = (props) => {
   const data = useHeadingData(props.id);
@@ -26,7 +27,7 @@ const HeadingChild = (props) => {
   const dispatch = useDispatch();
 
   return (
-    <li>
+    <li className={style["heading-child"]}>
       <textarea
         type="text"
         value={data.text}
@@ -59,6 +60,14 @@ const HeadingChild = (props) => {
           current={data.fontFamily}
         />
       </FormWrapper>
+      <FormWrapper name="Font Size">
+        <NumberForm
+          value={data.fontSize}
+          onChange={(mutator) =>
+            dispatch(setHeading(data.id, { fontSize: mutator(data.fontSize) }))
+          }
+        />
+      </FormWrapper>
       <FormWrapper name="Text Align">
         <OptionsMenu
           options={["Start", "Center", "End", "Justify"]}
@@ -72,14 +81,6 @@ const HeadingChild = (props) => {
           current={`${data.textAlign
             .slice(0, 1)
             .toUpperCase()}${data.textAlign.slice(1)}`}
-        />
-      </FormWrapper>
-      <FormWrapper name="Font Size">
-        <NumberForm
-          value={data.fontSize}
-          onChange={(mutator) =>
-            dispatch(setHeading(data.id, { fontSize: mutator(data.fontSize) }))
-          }
         />
       </FormWrapper>
       <FormWrapper name="Color">

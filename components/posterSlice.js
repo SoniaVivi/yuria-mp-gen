@@ -36,22 +36,32 @@ const headingDefaults = {
     color: "#000000",
     outline: "1px solid #000000",
   },
+  subheading: {
+    text: "Lorem Ipsum",
+    top: 0,
+    left: 0,
+    fontFamily: "Godzilla",
+    fontSize: "24",
+    textAlign: "center",
+    color: "#000000",
+    outline: "1px solid #000000",
+  },
 };
 
 export const slice = createSlice({
   name: "poster",
   initialState: testState,
   reducers: {
-    addTitle: {
+    addHeading: {
       reducer(state, action) {
         state.headings[prevId + 1] = {
-          ...headingDefaults.title,
-          ...action.payload.titleData,
+          ...headingDefaults[action.payload.headingType],
+          ...action.payload.headingData,
           id: (prevId += 1),
         };
       },
-      prepare(titleData) {
-        return { payload: { titleData } };
+      prepare(headingType, headingData = {}) {
+        return { payload: { headingData, headingType } };
       },
     },
     setHeading: {
@@ -76,7 +86,7 @@ export const slice = createSlice({
   },
 });
 
-export const { addTitle, setHeading } = slice.actions;
+export const { addHeading, setHeading } = slice.actions;
 
 export const selectMode = (state) => state.poster.mode;
 
