@@ -14,6 +14,8 @@ const useHeadingData = (id) => {
       ...style,
       style: {
         ...style,
+        width: `${style.width}px`,
+        height: `${style.height}px`,
         fontSize: `${style.fontSize}px`,
         outline: mode == "edit" ? style.outline : null,
       },
