@@ -5,7 +5,7 @@ const Arrow = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
-    className={`bi bi-arrow-down-short ${props.className ?? ""}`}
+    className={`bi bi-arrow-down-short ${props.className ?? ""} clickable`}
     onClick={props.onClick}
     viewBox="0 0 16 16"
   >

@@ -5,7 +5,7 @@ const Droplet = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
-    className={`bi bi-droplet ${props.className ?? ""}`}
+    className={`bi bi-droplet ${props.className ?? ""} clickable`}
     onClick={props.onClick}
     viewBox="0 0 16 16"
   >

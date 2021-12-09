@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { setHeading } from "../posterSlice";
+import { removeHeading, setHeading } from "../posterSlice";
 import OptionsMenu from "../OptionsMenu";
 import FormWrapper from "./FormWrapper";
 import NumberForm from "../NumberForm";
@@ -35,6 +35,28 @@ const HeadingChild = (props) => {
           dispatch(setHeading(data.id, { text: e.target.value }))
         }
       ></textarea>
+      <button
+        className={`${style.delete} clickable`}
+        onClick={() => dispatch(removeHeading(data.id))}
+      >
+        Delete
+      </button>
+      <FormWrapper name="Width">
+        <NumberForm
+          value={data.width}
+          onChange={(mutator) =>
+            dispatch(setHeading(data.id, { width: mutator(data.width) }))
+          }
+        />
+      </FormWrapper>
+      <FormWrapper name="Height">
+        <NumberForm
+          value={data.height}
+          onChange={(mutator) =>
+            dispatch(setHeading(data.id, { height: mutator(data.height) }))
+          }
+        />
+      </FormWrapper>
       <FormWrapper name="Font Family">
         <OptionsMenu
           options={[

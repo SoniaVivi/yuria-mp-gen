@@ -28,6 +28,7 @@ const Heading = (props) => {
       style={headingData.style}
       className={style.moveable}
       value={headingData.text}
+      spellCheck="false"
       onChange={(e) =>
         dispatch(setHeading(headingData.id, { text: e.target.value }))
       }

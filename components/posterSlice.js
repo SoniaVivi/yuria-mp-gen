@@ -22,7 +22,6 @@ const testState = {
       fontSize: 36,
       fontFamily: "Godzilla",
       color: "#000000",
-      outline: "1px solid #000000",
     },
   },
 };
@@ -35,10 +34,9 @@ const headingDefaults = {
     width: 300,
     height: 150,
     fontFamily: "Godzilla",
-    fontSize: "36",
+    fontSize: 36,
     textAlign: "left",
     color: "#000000",
-    outline: "1px solid #000000",
   },
   subheading: {
     text: "Lorem Ipsum",
@@ -47,10 +45,9 @@ const headingDefaults = {
     width: 300,
     height: 150,
     fontFamily: "Godzilla",
-    fontSize: "24",
+    fontSize: 24,
     textAlign: "center",
     color: "#000000",
-    outline: "1px solid #000000",
   },
 };
 
@@ -89,10 +86,20 @@ export const slice = createSlice({
         return { payload: { mode } };
       },
     },
+    removeHeading: {
+      reducer(state, action) {
+        //eslint-disable-next-line no-unused-vars
+        const { [action.payload.id]: _, ...headings } = state.headings;
+        state.headings = headings;
+      },
+      prepare(id) {
+        return { payload: { id } };
+      },
+    },
   },
 });
 
-export const { addHeading, setHeading } = slice.actions;
+export const { addHeading, setHeading, removeHeading } = slice.actions;
 
 export const selectMode = (state) => state.poster.mode;
 

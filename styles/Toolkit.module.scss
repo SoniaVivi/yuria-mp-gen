@@ -98,10 +98,18 @@ $side-padding: 12px;
   margin-top: 5px;
 
   > :first-child {
+    min-width: fit-content;
+    width: 80px;
     margin-right: 10px;
   }
 }
 
 .heading-child {
   margin-top: 10px;
+}
+
+.delete {
+  margin-left: auto;
+  font-size: 14px;
+  color: $urgent-color;
 }
