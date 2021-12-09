@@ -43,6 +43,6 @@ const NumberForm = (props) => {
 export default NumberForm;
 
 NumberForm.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   onChange: PropTypes.func.isRequired,
 };

@@ -15,12 +15,12 @@ const HeadingsTab = () => {
         <div className={style["heading-presets"]}>
           <h3>Presets</h3>
           <HeadingPreset
-            text="title"
+            displayText="title"
             headingType="title"
             className={style["preset-option"]}
           />
           <HeadingPreset
-            text="subheading"
+            displayText="subheading"
             headingType="subheading"
             className={style["preset-option"]}
           />

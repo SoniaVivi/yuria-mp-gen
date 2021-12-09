@@ -5,16 +5,17 @@ import { addHeading } from "../posterSlice";
 
 const HeadingPreset = (props) => {
   const dispatch = useDispatch();
+  const { headingType, displayText, ...containerProps } = props;
 
   return (
-    <div {...props}>
+    <div {...containerProps}>
       <span>
-        {props.text.slice(0, 1).toUpperCase() +
-          props.text.slice(1).toLowerCase()}
+        {displayText.slice(0, 1).toUpperCase() +
+          displayText.slice(1).toLowerCase()}
       </span>
       <button
         className="plus-sign clickable"
-        onClick={() => dispatch(addHeading(props.headingType))}
+        onClick={() => dispatch(addHeading(headingType))}
       ></button>
     </div>
   );
@@ -23,6 +24,6 @@ const HeadingPreset = (props) => {
 export default HeadingPreset;
 
 HeadingPreset.propTypes = {
-  text: PropTypes.string.isRequired,
+  displayText: PropTypes.string.isRequired,
   headingType: PropTypes.string.isRequired,
 };
