@@ -2,9 +2,18 @@ import React, { useState } from "react";
 import HeadingsTab from "./toolkitChildren/HeadingsTab";
 import style from "../styles/Toolkit.module.scss";
 import TabButton from "./toolkitChildren/TabButton";
+import ImagesTab from "./toolkitChildren/ImagesTab";
 
 const Toolkit = () => {
   const [activeTab, setActiveTab] = useState("headings");
+  const currentTab = () => {
+    switch (activeTab) {
+      case "headings":
+        return <HeadingsTab />;
+      case "images":
+        return <ImagesTab />;
+    }
+  };
 
   return (
     <div className={style.toolkit}>
@@ -25,7 +34,7 @@ const Toolkit = () => {
           activeTab={activeTab}
         />
       </div>
-      {activeTab == "headings" ? <HeadingsTab /> : null}
+      {currentTab()}
     </div>
   );
 };

@@ -113,3 +113,13 @@ $side-padding: 12px;
   font-size: 14px;
   color: $urgent-color;
 }
+
+.add-image-button {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 4px;
+  border: 1px solid $light-border-color;
+  border-radius: 5px;
+  font-weight: 600;
+}

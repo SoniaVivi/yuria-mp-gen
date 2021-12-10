@@ -1,25 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import style from "../../styles/Home.module.scss";
 import { useDispatch } from "react-redux";
 import { setHeading } from "../posterSlice";
 import useHeadingData from "../hooks/useHeadingData";
-import getLocalCoords from "../helpers/getLocalCoords";
+import useAnchor from "../hooks/useAnchor";
 
 const Heading = (props) => {
   const headingData = useHeadingData(props.id);
-  const [anchor, setAnchor] = useState({ x: null, y: null });
+  const [anchor, setAnchor] = useAnchor();
   const dispatch = useDispatch();
-
-  const withinEdge = (e) => {
-    const data = getLocalCoords(e);
-    return (
-      data.x <= data.width * 0.1 ||
-      data.x >= data.width * 0.9 ||
-      data.y <= data.height * 0.1 ||
-      data.y >= data.height * 0.9
-    );
-  };
 
   return (
     <textarea
@@ -33,11 +23,8 @@ const Heading = (props) => {
         dispatch(setHeading(headingData.id, { text: e.target.value }))
       }
       onMouseDown={(e) => {
-        if (!withinEdge(e)) {
-          props.setAnchor(e, props.id);
-        } else {
-          setAnchor({ x: e.clientX, y: e.clientY });
-        }
+        const result = props.onMouseDown(e, props.id, "heading");
+        if (result) setAnchor({ type: "drop", position: result });
       }}
       onMouseMove={(e) => {
         if (anchor.x != null) {
@@ -47,10 +34,10 @@ const Heading = (props) => {
               height: headingData.height + e.clientY - anchor.y,
             })
           );
-          setAnchor({ x: e.clientX, y: e.clientY });
+          setAnchor({ type: "eventDrop", event: e });
         }
       }}
-      onMouseUp={() => setAnchor({ x: null, y: null })}
+      onMouseUp={() => setAnchor({ type: "retrieve" })}
     ></textarea>
   );
 };
@@ -59,5 +46,5 @@ export default Heading;
 
 Heading.propTypes = {
   id: PropTypes.string.isRequired,
-  setAnchor: PropTypes.func.isRequired,
+  onMouseDown: PropTypes.func.isRequired,
 };

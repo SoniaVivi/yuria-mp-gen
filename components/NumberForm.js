@@ -14,13 +14,27 @@ const NumberForm = (props) => {
     }
   };
   const setValue = (val) =>
-    /^\d+$/.test(val) || val == ""
+    (/^-?[0-9]\d*(\.\d+)?$/.test(val) || val == "") &&
+    withinLimits(formatNumber(val))
       ? props.onChange(() => formatNumber(val))
       : null;
   const valueStepFunc =
     (change = 1) =>
     () =>
-      props.onChange((prev) => parseFloat(prev) + change);
+      props.onChange((prev) => {
+        const newVal = parseFloat(prev) + change;
+        return withinLimits(newVal) ? newVal : prev;
+      });
+  const withinLimits = (val) => {
+    const value = parseFloat(val);
+    if (
+      (props?.min && value < props.min) ||
+      (props?.max && value > props.max)
+    ) {
+      return false;
+    }
+    return true;
+  };
 
   return (
     <div className={style.wrapper}>
@@ -44,5 +58,7 @@ export default NumberForm;
 
 NumberForm.propTypes = {
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  min: PropTypes.number,
+  max: PropTypes.number,
   onChange: PropTypes.func.isRequired,
 };

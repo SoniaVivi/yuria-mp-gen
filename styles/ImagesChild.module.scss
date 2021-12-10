@@ -1,0 +1,37 @@
+@import "_variables";
+
+.preview {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border: 1px solid $container-background;
+  border-radius: 5px;
+  background-color: $container-background;
+}
+
+.wrapper {
+  display: flex;
+
+  > :last-child {
+    margin-left: 10px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-bottom: 10px;
+}
+
+.filter-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.fill-row {
+  margin-right: 100%;
+}
+
+.filter-wrapper {
+  width: 33%;
+}

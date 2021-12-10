@@ -1,10 +1,8 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { selectMode } from "../posterSlice";
 
 const useHeadingData = (id) => {
   const rawHeadingData = useSelector((state) => state.poster.headings[id]);
-  const mode = useSelector(selectMode);
 
   const headingData = useMemo(() => {
     const { id, text, ...style } = rawHeadingData;
@@ -17,10 +15,9 @@ const useHeadingData = (id) => {
         width: `${style.width}px`,
         height: `${style.height}px`,
         fontSize: `${style.fontSize}px`,
-        outline: mode == "edit" ? style.outline : null,
       },
     };
-  }, [rawHeadingData, mode]);
+  }, [rawHeadingData]);
 
   return headingData;
 };

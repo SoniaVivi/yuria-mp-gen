@@ -1,31 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useRef, useState, useReducer } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setHeading } from "./posterSlice";
+import { setHeading, setImage } from "./posterSlice";
 import Heading from "./workspaceChildren/Heading";
+import WorkspaceImage from "./workspaceChildren/WorkspaceImage";
+import clickWithinEdge from "./helpers/clickWithinEdge";
+import useAnchor from "./hooks/useAnchor";
 
 const Workspace = (props) => {
   const headingsIds = useSelector((state) =>
     Object.keys(state.poster.headings)
   );
+  const imagesIds = useSelector((state) => Object.keys(state.poster.images));
   const { width, height } = useSelector((state) => state.poster.size);
   const dispatch = useDispatch();
   const containerRef = useRef(null);
   const [selectedElem, setSelectedElem] = useState(null);
-  const [anchor, setAnchor] = useReducer(
-    (state, action) => {
-      switch (action.type) {
-        case "drop":
-          return action.position;
-        case "retrieve":
-          return { x: null, y: null };
-      }
-    },
-    { x: null, y: null }
-  );
+  const [anchor, setAnchor] = useAnchor();
 
-  const fromEventSetAnchor = (e, id) => {
+  const fromEventSetAnchor = (e, id, type) => {
     setAnchor({
       type: "drop",
       position: {
@@ -33,7 +27,15 @@ const Workspace = (props) => {
         y: e.clientY - e.target.offsetTop,
       },
     });
-    setSelectedElem(id);
+    setSelectedElem({ id, type });
+  };
+
+  const childOnMouseDown = (e, id, type) => {
+    if (!clickWithinEdge(e)) {
+      fromEventSetAnchor(e, id, type);
+    } else {
+      return { x: e.clientX, y: e.clientY };
+    }
   };
 
   return (
@@ -46,23 +48,29 @@ const Workspace = (props) => {
         maxWidth: width,
         maxHeight: height,
       }}
-      onMouseMove={(e) =>
-        selectedElem !== null
-          ? dispatch(
-              setHeading(selectedElem, {
-                top: e.clientY - anchor.y,
-                left: e.clientX - containerRef.current.offsetLeft - anchor.x,
-              })
-            )
-          : null
-      }
+      onMouseMove={(e) => {
+        if (!selectedElem) return;
+        const coords = {
+          top: e.clientY - anchor.y,
+          left: e.clientX - containerRef.current.offsetLeft - anchor.x,
+        };
+
+        if (selectedElem.type == "heading") {
+          dispatch(setHeading(selectedElem.id, coords));
+        } else if (selectedElem.type == "image") {
+          dispatch(setImage(selectedElem.id, coords));
+        }
+      }}
       onMouseUp={() => {
         setSelectedElem(null);
         setAnchor({ type: "retrieve" });
       }}
     >
       {headingsIds.map((id) => (
-        <Heading id={id} key={id} setAnchor={fromEventSetAnchor} />
+        <Heading id={id} key={id} onMouseDown={childOnMouseDown} />
+      ))}
+      {imagesIds.map((id) => (
+        <WorkspaceImage id={id} key={id} onMouseDown={childOnMouseDown} />
       ))}
     </div>
   );
