@@ -5,9 +5,7 @@ import HeadingChild from "./HeadingChild";
 import HeadingPreset from "./HeadingPreset";
 
 const HeadingsTab = () => {
-  const headingsIds = useSelector((state) =>
-    Object.keys(state.poster.headings)
-  );
+  const headingsIds = useSelector((state) => Object.keys(state.heading));
 
   return (
     <div>

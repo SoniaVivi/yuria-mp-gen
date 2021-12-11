@@ -2,18 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setHeading, setImage } from "./posterSlice";
 import Heading from "./workspaceChildren/Heading";
 import WorkspaceImage from "./workspaceChildren/WorkspaceImage";
 import clickWithinEdge from "./helpers/clickWithinEdge";
 import useAnchor from "./hooks/useAnchor";
+import { setHeading } from "./slices/headingsSlice";
+import { setImage } from "./slices/imagesSlice";
 
 const Workspace = (props) => {
-  const headingsIds = useSelector((state) =>
-    Object.keys(state.poster.headings)
-  );
-  const imagesIds = useSelector((state) => Object.keys(state.poster.images));
-  const { width, height } = useSelector((state) => state.poster.size);
+  const headingsIds = useSelector((state) => Object.keys(state.heading));
+  const imagesIds = useSelector((state) => Object.keys(state.image));
+  const { width, height } = useSelector((state) => state.canvas.size);
   const dispatch = useDispatch();
   const containerRef = useRef(null);
   const [selectedElem, setSelectedElem] = useState(null);

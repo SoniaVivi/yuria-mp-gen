@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import useImageData from "../hooks/useImageData";
 import style from "../../styles/Home.module.scss";
 import useAnchor from "../hooks/useAnchor";
-import { setImage } from "../posterSlice";
 import { useDispatch } from "react-redux";
+import { setImage } from "../slices/imagesSlice";
 
 const WorkspaceImage = (props) => {
   const imageData = useImageData(props.id);

@@ -2,18 +2,22 @@ import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import OptionsMenu from "../../OptionsMenu";
-import { addFilter, imageFilters, setFilter } from "../../posterSlice";
 import NumberForm from "../../NumberForm";
 import style from "../../../styles/ImagesChild.module.scss";
+import {
+  addFilter,
+  filterDefaults,
+  setFilter,
+} from "../../slices/filtersSlice";
 
 const FiltersForm = (props) => {
   const filters = useSelector((state) =>
-    Object.entries(state.poster.images[props.id].filters)
+    Object.entries(state.filter[props.id] ?? {})
   );
   const dispatch = useDispatch();
   const possibleFilters = useMemo(
     () =>
-      Object.keys(imageFilters)
+      Object.keys(filterDefaults)
         .map((s) => s.split(/(?=[A-Z])/).join(" "))
         .map((s) => s.slice(0, 1).toUpperCase() + s.slice(1)),
     []

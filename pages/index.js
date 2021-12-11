@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import ImageForm from "../components/toolkitChildren/ImageForm";
 
 export default function Home() {
-  const showImageForm = useSelector((state) => state.poster.showImageForm);
+  const showImageForm = useSelector((state) => state.canvas.showImageForm);
 
   return (
     <div className={styles.container}>

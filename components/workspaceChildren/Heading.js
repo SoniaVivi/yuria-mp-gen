@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "../../styles/Home.module.scss";
 import { useDispatch } from "react-redux";
-import { setHeading } from "../posterSlice";
 import useHeadingData from "../hooks/useHeadingData";
 import useAnchor from "../hooks/useAnchor";
+import { setHeading } from "../slices/headingsSlice";
 
 const Heading = (props) => {
   const headingData = useHeadingData(props.id);

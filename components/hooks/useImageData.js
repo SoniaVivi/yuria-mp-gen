@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 
 const useImageData = (id) => {
-  const rawImageData = useSelector((state) => state.poster.images[id]);
-  const filters = useSelector((state) => state.poster.images[id].filters);
+  const rawImageData = useSelector((state) => state.image[id]);
+  const filters = useSelector((state) => state.filter[id]);
 
   const headingData = useMemo(() => {
     //eslint-disable-next-line no-unused-vars
@@ -17,7 +17,7 @@ const useImageData = (id) => {
         width: `${style.width}px`,
         height: `${style.height}px`,
         transform: `rotate(${style.rotate}deg)`,
-        filter: Object.entries(filters)
+        filter: Object.entries(filters ?? {})
           .reduce(
             (a, [name, data]) => `${a} ${name}(${data.value}${data.unit})`,
             ""

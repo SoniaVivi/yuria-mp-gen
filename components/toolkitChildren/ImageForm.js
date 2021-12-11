@@ -1,7 +1,8 @@
 import React from "react";
 import style from "../../styles/ImageForm.module.scss";
 import { useDispatch } from "react-redux";
-import { addImage, toggleImageForm } from "../posterSlice";
+import { toggleImageForm } from "../slices/canvasSlice";
+import { addImage } from "../slices/imagesSlice";
 
 const ImageForm = () => {
   const dispatch = useDispatch();

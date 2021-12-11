@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "../../../styles/ImagesChild.module.scss";
 import FormWrapper from "../shared/FormWrapper";
 import NumberForm from "../../NumberForm";
-import { setImage } from "../../posterSlice";
 import FiltersForm from "./FiltersForm";
+import { setImage } from "../../slices/imagesSlice";
 
 const ImagesChild = (props) => {
-  const imageData = useSelector((state) => state.poster.images[props.id]);
+  const imageData = useSelector((state) => state.image[props.id]);
   const dispatch = useDispatch();
 
   return (
