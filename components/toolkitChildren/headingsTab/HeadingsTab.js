@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import style from "../../styles/Toolkit.module.scss";
+import style from "../../../styles/Toolkit.module.scss";
 import HeadingChild from "./HeadingChild";
 import HeadingPreset from "./HeadingPreset";
 

@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import style from "../../styles/ImagesChild.module.scss";
-import FormWrapper from "./FormWrapper";
-import NumberForm from "../NumberForm";
-import { setImage } from "../posterSlice";
+import style from "../../../styles/ImagesChild.module.scss";
+import FormWrapper from "../shared/FormWrapper";
+import NumberForm from "../../NumberForm";
+import { setImage } from "../../posterSlice";
 import FiltersForm from "./FiltersForm";
 
 const ImagesChild = (props) => {

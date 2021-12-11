@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { removeHeading, setHeading } from "../posterSlice";
-import OptionsMenu from "../OptionsMenu";
-import FormWrapper from "./FormWrapper";
-import NumberForm from "../NumberForm";
-import ColorForm from "./ColorForm";
-import useHeadingData from "../hooks/useHeadingData";
-import style from "../../styles/Toolkit.module.scss";
+import { removeHeading, setHeading } from "../../posterSlice";
+import OptionsMenu from "../../OptionsMenu";
+import FormWrapper from "../shared/FormWrapper";
+import NumberForm from "../../NumberForm";
+import ColorForm from "../shared/ColorForm";
+import useHeadingData from "../../hooks/useHeadingData";
+import style from "../../../styles/Toolkit.module.scss";
 
 const HeadingChild = (props) => {
   const data = useHeadingData(props.id);

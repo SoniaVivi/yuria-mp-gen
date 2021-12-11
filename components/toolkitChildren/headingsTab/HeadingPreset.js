@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { addHeading } from "../posterSlice";
+import { addHeading } from "../../posterSlice";
 
 const HeadingPreset = (props) => {
   const dispatch = useDispatch();

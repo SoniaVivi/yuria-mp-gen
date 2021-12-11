@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { HexColorInput, HexColorPicker } from "react-colorful";
-import style from "../../styles/ColorForm.module.scss";
-import Droplet from "../svgs/Droplet";
-import onOutsideClick from "../helpers/onOutsideClick";
+import style from "../../../styles/ColorForm.module.scss";
+import Droplet from "../../svgs/Droplet";
+import onOutsideClick from "../../helpers/onOutsideClick";
 
 const ColorForm = (props) => {
   const [showColorPicker, setShowColorPicker] = useState(false);

@@ -1,10 +1,10 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import OptionsMenu from "../OptionsMenu";
-import { addFilter, imageFilters, setFilter } from "../posterSlice";
-import NumberForm from "../NumberForm";
-import style from "../../styles/ImagesChild.module.scss";
+import OptionsMenu from "../../OptionsMenu";
+import { addFilter, imageFilters, setFilter } from "../../posterSlice";
+import NumberForm from "../../NumberForm";
+import style from "../../../styles/ImagesChild.module.scss";
 
 const FiltersForm = (props) => {
   const filters = useSelector((state) =>

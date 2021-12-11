@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import HeadingsTab from "./toolkitChildren/HeadingsTab";
+import HeadingsTab from "./toolkitChildren/headingsTab/HeadingsTab";
 import style from "../styles/Toolkit.module.scss";
 import TabButton from "./toolkitChildren/TabButton";
-import ImagesTab from "./toolkitChildren/ImagesTab";
+import ImagesTab from "./toolkitChildren/imagesTab/ImagesTab";
 
 const Toolkit = () => {
   const [activeTab, setActiveTab] = useState("headings");
