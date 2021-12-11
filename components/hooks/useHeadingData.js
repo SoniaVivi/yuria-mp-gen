@@ -15,6 +15,7 @@ const useHeadingData = (id) => {
         width: `${style.width}px`,
         height: `${style.height}px`,
         fontSize: `${style.fontSize}px`,
+        transform: `rotate(${style.rotate}deg)`,
       },
     };
   }, [rawHeadingData]);

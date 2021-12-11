@@ -10,12 +10,13 @@ const emptyState = {
   showImageForm: false,
 };
 
-const globalDefaults = { zIndex: 1 };
+const globalDefaults = { zIndex: 1, rotate: 0 };
 
 const testState = {
   ...emptyState,
   headings: {
     0: {
+      ...globalDefaults,
       id: 0,
       text: "TEST ZILLA",
       top: 0,
@@ -65,7 +66,6 @@ const imageDefault = {
   objectFit: "contain",
   filters: {},
   data: "",
-  rotation: 0,
 };
 
 export const imageFilters = {

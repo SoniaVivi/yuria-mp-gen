@@ -105,6 +105,26 @@ const HeadingChild = (props) => {
             .toUpperCase()}${data.textAlign.slice(1)}`}
         />
       </FormWrapper>
+      <FormWrapper name="Z-Index">
+        <NumberForm
+          value={data.zIndex}
+          min={1}
+          max={99999}
+          onChange={(mutator) =>
+            dispatch(setHeading(data.id, { zIndex: mutator(data.zIndex) }))
+          }
+        />
+      </FormWrapper>
+      <FormWrapper name="Rotate">
+        <NumberForm
+          value={data.rotate}
+          min={null}
+          max={null}
+          onChange={(mutator) =>
+            dispatch(setHeading(data.id, { rotate: mutator(data.rotate) }))
+          }
+        />
+      </FormWrapper>
       <FormWrapper name="Color">
         <ColorForm
           color={data.color}

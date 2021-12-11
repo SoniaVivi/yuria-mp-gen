@@ -16,10 +16,10 @@ const useImageData = (id) => {
         ...style,
         width: `${style.width}px`,
         height: `${style.height}px`,
+        transform: `rotate(${style.rotate}deg)`,
         filter: Object.entries(filters)
           .reduce(
-            (a, [name, data]) =>
-              data.value ? `${a} ${name}(${data.value}${data.unit})` : a,
+            (a, [name, data]) => `${a} ${name}(${data.value}${data.unit})`,
             ""
           )
           .slice(1),

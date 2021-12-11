@@ -95,7 +95,10 @@ $side-padding: 12px;
   display: flex;
   align-items: center;
   width: fit-content;
-  margin-top: 5px;
+
+  &:not(:first-child) {
+    margin-top: 5px;
+  }
 
   > :first-child {
     min-width: fit-content;

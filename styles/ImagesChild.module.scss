@@ -1,8 +1,9 @@
 @import "_variables";
 
 .preview {
-  width: 150px;
-  height: 150px;
+  $size: 160px;
+  width: $size;
+  height: $size;
   object-fit: contain;
   border: 1px solid $container-background;
   border-radius: 5px;
@@ -11,6 +12,7 @@
 
 .wrapper {
   display: flex;
+  margin-bottom: 5px;
 
   > :last-child {
     margin-left: 10px;

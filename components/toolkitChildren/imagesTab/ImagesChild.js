@@ -39,6 +39,30 @@ const ImagesChild = (props) => {
               }
             />
           </FormWrapper>
+          <FormWrapper name="Z-Index">
+            <NumberForm
+              value={imageData.zIndex}
+              min={1}
+              max={99999}
+              onChange={(mutator) =>
+                dispatch(
+                  setImage(imageData.id, { zIndex: mutator(imageData.zIndex) })
+                )
+              }
+            />
+          </FormWrapper>
+          <FormWrapper name="Rotate">
+            <NumberForm
+              value={imageData.rotate}
+              min={null}
+              max={null}
+              onChange={(mutator) =>
+                dispatch(
+                  setImage(imageData.id, { rotate: mutator(imageData.rotate) })
+                )
+              }
+            />
+          </FormWrapper>
         </div>
       </div>
       <FiltersForm id={props.id} />
