@@ -23,6 +23,7 @@ const WorkspaceImage = (props) => {
         const result = props.onMouseDown(e, props.id, "image");
         if (result) setAnchor({ type: "drop", position: result });
       }}
+      onMouseLeave={() => setAnchor({ type: "retrieve" })}
       onMouseMove={(e) => {
         if (anchor.x != null) {
           dispatch(
