@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "../../../styles/ImagesChild.module.scss";
 import FormWrapper from "../shared/FormWrapper";
 import NumberForm from "../../NumberForm";
-import FiltersForm from "./FiltersForm";
+import FiltersForm from "../shared/FiltersForm";
 import { setImage } from "../../slices/imagesSlice";
 
 const ImagesChild = (props) => {

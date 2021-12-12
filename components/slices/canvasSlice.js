@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const emptyState = {
   mode: "edit",
   size: { width: 750, height: 1125 },
-  showImageForm: false,
+  imageForm: null,
+  background: { data: null, size: "contain", repeat: "no-repeat" },
 };
 
 export const slice = createSlice({
@@ -18,18 +19,34 @@ export const slice = createSlice({
         return { payload: { mode } };
       },
     },
-    toggleImageForm: {
-      reducer(state) {
-        state.showImageForm = !state.showImageForm;
+    setImageForm: {
+      reducer(state, action) {
+        state.imageForm = action.payload.formType;
       },
-      prepare() {
-        return { payload: {} };
+      prepare(formType) {
+        return { payload: { formType } };
+      },
+    },
+    setSize: {
+      reducer(state, action) {
+        state.size = { ...state.size, ...action.payload.size };
+      },
+      prepare(size) {
+        return { payload: { size } };
+      },
+    },
+    setBackground: {
+      reducer(state, action) {
+        state.background = { ...state.background, ...action.payload.backgrond };
+      },
+      prepare(backgrond = {}) {
+        return { payload: { backgrond } };
       },
     },
   },
 });
 
-export const { setMode, toggleImageForm } = slice.actions;
+export const { setMode, setImageForm, setSize, setBackground } = slice.actions;
 
 export const selectMode = (state) => state.poster.mode;
 

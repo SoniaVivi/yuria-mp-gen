@@ -1,18 +1,19 @@
 import React from "react";
 import style from "../../styles/ImageForm.module.scss";
-import { useDispatch } from "react-redux";
-import { toggleImageForm } from "../slices/canvasSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setBackground, setImageForm } from "../slices/canvasSlice";
 import { addImage } from "../slices/imagesSlice";
 
 const ImageForm = () => {
   const dispatch = useDispatch();
+  const formType = useSelector((state) => state.canvas.imageForm);
 
   return (
     <div
       className={style.container}
       onDragOver={(e) => e.preventDefault()}
       onDrop={(e) => e.preventDefault()}
-      onClick={() => dispatch(toggleImageForm())}
+      onClick={() => dispatch(setImageForm(null))}
     >
       <div
         className={style.wrapper}
@@ -24,8 +25,12 @@ const ImageForm = () => {
           } else if (file.name.match(/(\.png|\.jpe?g)$/)) {
             let fr = new FileReader();
             fr.onload = () => {
-              dispatch(addImage(fr.result));
-              dispatch(toggleImageForm());
+              if (formType == "image") {
+                dispatch(addImage(fr.result));
+              } else if (formType == "canvas") {
+                dispatch(setBackground({ data: fr.result }));
+              }
+              dispatch(setImageForm(null));
             };
             fr.readAsDataURL(file);
           }

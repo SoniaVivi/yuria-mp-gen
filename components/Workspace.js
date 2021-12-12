@@ -8,11 +8,18 @@ import clickWithinEdge from "./helpers/clickWithinEdge";
 import useAnchor from "./hooks/useAnchor";
 import { setHeading } from "./slices/headingsSlice";
 import { setImage } from "./slices/imagesSlice";
+import useFilters from "./hooks/useFilters";
 
 const Workspace = (props) => {
   const headingsIds = useSelector((state) => Object.keys(state.heading));
   const imagesIds = useSelector((state) => Object.keys(state.image));
   const { width, height } = useSelector((state) => state.canvas.size);
+  const {
+    data: background,
+    size,
+    repeat,
+  } = useSelector((state) => state.canvas.background);
+  const { filterCSS: canvasFilters } = useFilters("canvas");
   const dispatch = useDispatch();
   const containerRef = useRef(null);
   const [selectedElem, setSelectedElem] = useState(null);
@@ -46,6 +53,10 @@ const Workspace = (props) => {
         minHeight: height,
         maxWidth: width,
         maxHeight: height,
+        backgroundImage: `url(${background})`,
+        backgroundSize: size,
+        backgroundRepeat: repeat,
+        filter: canvasFilters,
       }}
       onMouseMove={(e) => {
         if (!selectedElem) return;

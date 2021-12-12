@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import OptionsMenu from "../../OptionsMenu";
 import NumberForm from "../../NumberForm";
 import style from "../../../styles/ImagesChild.module.scss";
@@ -9,11 +9,10 @@ import {
   filterDefaults,
   setFilter,
 } from "../../slices/filtersSlice";
+import useFilters from "../../hooks/useFilters";
 
 const FiltersForm = (props) => {
-  const filters = useSelector((state) =>
-    Object.entries(state.filter[props.id] ?? {})
-  );
+  const { filterEntries: filters } = useFilters(props.id);
   const dispatch = useDispatch();
   const possibleFilters = useMemo(
     () =>
@@ -29,7 +28,7 @@ const FiltersForm = (props) => {
   return (
     <div className={style["filter-container"]}>
       <OptionsMenu
-        current="Add Image Filter"
+        current={props.defaultText ?? `Add Image Filter`}
         options={possibleFilters}
         setOptionFunc={(filter) =>
           dispatch(addFilter(props.id, camelCase(filter)))
@@ -65,4 +64,7 @@ const FiltersForm = (props) => {
 
 export default FiltersForm;
 
-FiltersForm.propTypes = { id: PropTypes.string.isRequired };
+FiltersForm.propTypes = {
+  id: PropTypes.string.isRequired,
+  defaultText: PropTypes.string,
+};
