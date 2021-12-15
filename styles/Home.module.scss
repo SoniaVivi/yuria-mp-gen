@@ -7,7 +7,7 @@
   width: fit-content;
   min-height: 100vh;
   height: fit-content;
-  margin-left: calc(50vw - 480px);
+  margin-left: calc(50vw - 490px);
   padding-top: $container-top-padding;
   background-color: $container-background;
 }
@@ -21,6 +21,7 @@
 .moveable {
   position: absolute;
   scrollbar-width: none;
+  overflow: hidden;
 
   &:hover {
     outline: 1px solid #000000;

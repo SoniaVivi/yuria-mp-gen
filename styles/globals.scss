@@ -75,6 +75,30 @@ textarea {
     height: $line-thickness;
   }
 }
+
+.minus-sign {
+  $size: 15px;
+  $line-thickness: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size + 1px;
+  user-select: none;
+  border-radius: 50%;
+
+  &::after {
+    content: "";
+    width: 5px;
+    height: $line-thickness;
+    background-color: $text-color;
+  }
+
+  &:hover {
+    background-color: $hover;
+  }
+}
+
 .dropdown-container {
   $item-width: 162px;
   position: relative;
@@ -114,6 +138,7 @@ textarea {
   background-color: $toolkit-background;
 
   * {
+    text-align: start;
     background-color: $toolkit-background;
   }
 }
@@ -152,4 +177,8 @@ textarea {
 
 .hover:hover {
   background-color: $hover;
+}
+
+.no-click {
+  pointer-events: none;
 }

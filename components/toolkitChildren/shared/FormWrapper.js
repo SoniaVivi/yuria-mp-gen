@@ -5,7 +5,7 @@ import style from "../../../styles/Toolkit.module.scss";
 const FormWrapper = (props) => {
   return (
     <div className={style["options-menu-container"]}>
-      <span>{props.name}:</span>
+      <span className={style["option-name"]}>{props.name}:</span>
       {props.children}
     </div>
   );

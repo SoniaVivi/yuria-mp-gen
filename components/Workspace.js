@@ -9,6 +9,8 @@ import useAnchor from "./hooks/useAnchor";
 import { setHeading } from "./slices/headingsSlice";
 import { setImage } from "./slices/imagesSlice";
 import useFilters from "./hooks/useFilters";
+import Credits from "./workspaceChildren/Credits";
+import { setStyle } from "./slices/creditsSlice";
 
 const Workspace = (props) => {
   const headingsIds = useSelector((state) => Object.keys(state.heading));
@@ -69,6 +71,8 @@ const Workspace = (props) => {
           dispatch(setHeading(selectedElem.id, coords));
         } else if (selectedElem.type == "image") {
           dispatch(setImage(selectedElem.id, coords));
+        } else if (selectedElem.type == "credits") {
+          dispatch(setStyle(coords));
         }
       }}
       onMouseUp={() => {
@@ -82,6 +86,7 @@ const Workspace = (props) => {
       {imagesIds.map((id) => (
         <WorkspaceImage id={id} key={id} onMouseDown={childOnMouseDown} />
       ))}
+      <Credits onMouseDown={childOnMouseDown} />
     </div>
   );
 };

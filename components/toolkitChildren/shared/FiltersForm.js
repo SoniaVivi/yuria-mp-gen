@@ -10,20 +10,16 @@ import {
   setFilter,
 } from "../../slices/filtersSlice";
 import useFilters from "../../hooks/useFilters";
+import fromCamelCase from "../../helpers/fromCamelCase";
+import toCamelCase from "../../helpers/toCamelCase";
 
 const FiltersForm = (props) => {
   const { filterEntries: filters } = useFilters(props.id);
   const dispatch = useDispatch();
   const possibleFilters = useMemo(
-    () =>
-      Object.keys(filterDefaults)
-        .map((s) => s.split(/(?=[A-Z])/).join(" "))
-        .map((s) => s.slice(0, 1).toUpperCase() + s.slice(1)),
+    () => Object.keys(filterDefaults).map((s) => fromCamelCase(s)),
     []
   );
-
-  const camelCase = (string) =>
-    string.slice(0, 1).toLowerCase() + string.split(" ").join("").slice(1);
 
   return (
     <div className={style["filter-container"]}>
@@ -31,7 +27,7 @@ const FiltersForm = (props) => {
         current={props.defaultText ?? `Add Image Filter`}
         options={possibleFilters}
         setOptionFunc={(filter) =>
-          dispatch(addFilter(props.id, camelCase(filter)))
+          dispatch(addFilter(props.id, toCamelCase(filter)))
         }
         className={style["add-filter"]}
       />

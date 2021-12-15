@@ -4,6 +4,7 @@ import style from "../styles/Toolkit.module.scss";
 import TabButton from "./toolkitChildren/TabButton";
 import ImagesTab from "./toolkitChildren/imagesTab/ImagesTab";
 import CanvasTab from "./toolkitChildren/canvasTab/CanvasTab";
+import CreditsTab from "./toolkitChildren/creditsTab/CreditsTab";
 
 const Toolkit = () => {
   const [activeTab, setActiveTab] = useState("headings");
@@ -15,6 +16,8 @@ const Toolkit = () => {
         return <ImagesTab />;
       case "canvas":
         return <CanvasTab />;
+      case "credits":
+        return <CreditsTab />;
     }
   };
 

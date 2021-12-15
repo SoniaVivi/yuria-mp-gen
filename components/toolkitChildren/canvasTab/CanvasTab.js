@@ -72,7 +72,7 @@ const CanvasTab = () => {
             )}
           />
         </FormWrapper>
-        <FormWrapper name="Background Fit">
+        <FormWrapper name="Background Repeat">
           <OptionsMenu
             options={Object.keys(repeatOptions)}
             setOptionFunc={(selected) =>
