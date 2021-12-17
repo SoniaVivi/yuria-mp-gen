@@ -27,10 +27,11 @@ const presets = {
       options.leads ?? []
     ).join("")}\n`;
     let secondLine = `‽BASED ON ${options.novel} screenp‽lay ${options.screenplay} mu‽sic ${options.music} direc‽ted ${options.director}\n`;
+    let thirdLine = "";
     let lastIndex = 0;
     while (secondLine.includes("‽")) {
       const i = secondLine.indexOf("‽");
-      secondLine += `${" ".repeat(i - lastIndex)}${
+      thirdLine += `${" ".repeat(i - lastIndex)}${
         lastIndex == 0 ? "the novel " : ""
       }by`;
       secondLine = [...secondLine];
@@ -38,7 +39,8 @@ const presets = {
       secondLine = secondLine.join("");
       lastIndex = i + (i == 0 ? "the novel ".length : 2);
     }
-    return (firstLine + secondLine).toUpperCase();
+    while (thirdLine.length < secondLine.length) thirdLine += " ";
+    return (firstLine + secondLine + thirdLine).toUpperCase();
   },
   trainToBusan(options) {
     return `${options.firstDistributor} presents a ${

@@ -49,7 +49,7 @@ const Workspace = (props) => {
   return (
     <div
       ref={containerRef}
-      className={props.className}
+      className={`${props.className} workspace`}
       style={{
         minWidth: width,
         minHeight: height,

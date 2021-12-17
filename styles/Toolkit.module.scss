@@ -111,7 +111,9 @@ $side-padding: 12px;
 .add-image-button {
   display: flex;
   align-items: center;
+  width: 146px;
   height: 28px;
+  margin-bottom: 5px;
   padding: 0 4px;
   border: 1px solid $light-border-color;
   border-radius: 5px;
