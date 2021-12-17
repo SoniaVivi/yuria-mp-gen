@@ -5,7 +5,7 @@ import style from "../../../styles/ImagesChild.module.scss";
 import FormWrapper from "../shared/FormWrapper";
 import NumberForm from "../../NumberForm";
 import FiltersForm from "../shared/FiltersForm";
-import { setImage } from "../../slices/imagesSlice";
+import { removeImage, setImage } from "../../slices/imagesSlice";
 
 const ImagesChild = (props) => {
   const imageData = useSelector((state) => state.image[props.id]);
@@ -17,6 +17,10 @@ const ImagesChild = (props) => {
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={imageData.data} alt="" className={style.preview} />
+          <button
+            className="delete clickable"
+            onClick={() => dispatch(removeImage(props.id))}
+          />
         </div>
         <div>
           <FormWrapper name="Width">

@@ -53,7 +53,7 @@ const headingDefaults = {
 
 export const slice = createSlice({
   name: "heading",
-  initialState: testState,
+  initialState: emptyState,
   reducers: {
     addHeading: {
       reducer(state, action) {
@@ -82,7 +82,7 @@ export const slice = createSlice({
       reducer(state, action) {
         //eslint-disable-next-line no-unused-vars
         const { [action.payload.id]: _, ...heading } = state;
-        state = heading;
+        return heading;
       },
       prepare(id) {
         return { payload: { id } };

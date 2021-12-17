@@ -18,7 +18,7 @@ import SetFontForm from "../shared/SetFontForm";
 const CreditsTab = () => {
   const {
     style: creditsStyle,
-    currentPreset,
+    preset: currentPreset,
     possibleKeys: presetKeys,
   } = useSelector((state) => state.credits);
   const creditPresets = useMemo(
@@ -31,11 +31,16 @@ const CreditsTab = () => {
     <div className={style["credits-tab"]}>
       <div className={style["credits-name"]}>
         <OptionsMenu
-          options={creditPresets}
+          options={
+            currentPreset != null ? [...creditPresets, "Clear"] : creditPresets
+          }
           setOptionFunc={(selected) =>
-            dispatch(setPreset(toCamelCase(selected)))
+            selected != "Clear"
+              ? dispatch(setPreset(toCamelCase(selected)))
+              : dispatch(setPreset(null))
           }
           current={fromCamelCase(currentPreset ?? "Select Preset")}
+          className={style.active}
         />
       </div>
       <FormWrapper name="Width">

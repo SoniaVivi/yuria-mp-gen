@@ -44,7 +44,7 @@ export const slice = createSlice({
       reducer(state, action) {
         //eslint-disable-next-line no-unused-vars
         const { [action.payload.id]: _, ...images } = state;
-        state = images;
+        return images;
       },
       prepare(id) {
         return { payload: { id } };

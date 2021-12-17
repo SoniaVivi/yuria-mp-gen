@@ -24,11 +24,9 @@ const HeadingChild = (props) => {
         }
       ></textarea>
       <button
-        className={`${style.delete} clickable`}
+        className="delete clickable"
         onClick={() => dispatch(removeHeading(data.id))}
-      >
-        Delete
-      </button>
+      ></button>
       <FormWrapper name="Width">
         <NumberForm
           value={data.width}

@@ -105,7 +105,6 @@ textarea {
   margin-left: -5px;
 
   &.active {
-    margin-bottom: 1px;
     z-index: 2;
   }
 
@@ -120,7 +119,7 @@ textarea {
     display: flex;
 
     &.active {
-      border-bottom: unset;
+      border-bottom: 1px solid rgba(0, 0, 0, 0);
       border-bottom-left-radius: unset;
       border-bottom-right-radius: unset;
     }
@@ -181,4 +180,16 @@ textarea {
 
 .no-click {
   pointer-events: none;
+}
+
+button.delete {
+  width: 40px;
+  height: 20px;
+  margin-left: auto;
+  font-size: 14px;
+  color: $urgent-color;
+
+  &::before {
+    content: "Delete";
+  }
 }

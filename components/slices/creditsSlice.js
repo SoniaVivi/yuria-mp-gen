@@ -112,7 +112,9 @@ export const slice = createSlice({
     setPreset: {
       reducer(state, action) {
         state.preset = action.payload.preset;
-        state.possibleKeys = [...presetKeys[action.payload.preset]];
+        if (action.payload.preset) {
+          state.possibleKeys = [...presetKeys[action.payload.preset]];
+        }
       },
       prepare(preset) {
         return { payload: { preset } };
