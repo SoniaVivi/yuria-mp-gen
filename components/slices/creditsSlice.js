@@ -95,7 +95,7 @@ const presetKeys = {
     "soundRecorder",
     ["costume"],
     "makeUp",
-    "specialMakeUp",
+    ["specialMakeUp"],
     "specialEffectsArtist",
     "musician",
     "soundSupervisor",
