@@ -2,7 +2,6 @@
 
 ![yuriaMPGen](https://user-images.githubusercontent.com/55420399/146696226-9b6916a0-7c41-4c6c-990c-9c38c6af8fd8.png)
 
-
 A web app to quickly and easily create movie posters.
 
 **Features**
@@ -16,3 +15,7 @@ A web app to quickly and easily create movie posters.
 - Create 2 different styles of billing credits.
 
 - Easily change poster size and apply filters.
+
+**Running a local copy**
+
+Clone repository, then run `yarn` to install dependencies. Start up a dev build with `yarn dev`
