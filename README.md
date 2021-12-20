@@ -13,5 +13,3 @@ A web app to quickly and easily create movie posters.
 - Create 2 different styles of billing credits.
 
 - Easily change poster size and apply filters.
-
-- Button to download poster.
